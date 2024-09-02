@@ -1,0 +1,33 @@
+package Basil.module.misc;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
+import org.lwjgl.input.Keyboard;
+
+import Basil.Client;
+import Basil.module.*;
+import Basil.module.Module;
+import Basil.utils.Invoker;
+import de.Hero.settings.Setting;
+import net.minecraft.entity.Entity;
+
+public class PVPFlagCheck extends Module{
+	
+	Queue<Entity> checkQueueEntity = new LinkedList<>();
+	Queue<Long> checkQueueTime = new LinkedList<>();
+	
+	public PVPFlagCheck() {
+		super("PVPFlagCheck", -1, Category.MISC);
+	}
+	
+	public void onFrame() {
+		
+	}
+	
+	public void entityAttackedByPlayer(Entity t) {
+		
+	}
+}

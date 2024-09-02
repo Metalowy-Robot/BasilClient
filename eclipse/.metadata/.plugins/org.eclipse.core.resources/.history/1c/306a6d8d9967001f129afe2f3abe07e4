@@ -1,0 +1,183 @@
+package Basil.module.combat;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import org.lwjgl.input.Keyboard;
+
+import Basil.Client;
+import Basil.module.*;
+import Basil.module.Module;
+import Basil.utils.Rotation;
+import de.Hero.settings.Setting;
+import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.network.play.client.C03PacketPlayer;
+
+public class AimBot extends Module{
+	
+	EntityLivingBase best;
+	public boolean inversed = false;
+
+	public AimBot() {
+		super("Aimbot", Keyboard.KEY_G, Category.COMBAT);
+	}
+	
+	public void setup() {
+		Client.sm.rSetting(new Setting("Range", this, 8, 4, 25, false));
+		Client.sm.rSetting(new Setting("Speed Min", this, 60, 30, 360, true));
+		Client.sm.rSetting(new Setting("Speed Max", this, 90, 30, 360, true));
+		Client.sm.rSetting(new Setting("Priority FOV", this, 45, 15, 180, true));
+	}
+	
+	public void inverse() {
+		inversed = !inversed;
+	}
+	
+	@Override
+	public void onFrame() {
+		if (!this.isToggled() || !(mc.thePlayer.getHealth() > 0)) {
+			return;
+		}
+		
+		ArrayList<Setting> settings = Client.sm.getSettingsByMod(this);
+		
+		boolean f = false;
+		best = null;
+		
+		for (Iterator<Entity> entities = mc.theWorld.loadedEntityList.iterator(); entities.hasNext();) {
+			Object theObject = entities.next();
+			if (theObject instanceof EntityLivingBase) {
+				EntityLivingBase entity = (EntityLivingBase) theObject;
+				if (entity instanceof EntityPlayerSP) {
+					continue;
+				}
+				if (!(entity instanceof EntityPlayer)) {
+					continue;
+				}
+				if (mc.thePlayer.getDistanceToEntity(entity) > settings.get(0).getValDouble() * 2) {
+					continue;
+				}
+				if (Rotation.getYawDistToEntity(entity) > settings.get(2).getValDouble()) {
+					continue;
+				}
+				
+				if (!f || mc.thePlayer.getDistanceToEntity(entity) < mc.thePlayer.getDistanceToEntity(best)) {
+					best = entity;
+					f = true;
+				}
+			}
+		}
+		
+		if (best == null) {
+			f = false;
+			try {
+				best = (EntityLivingBase) mc.theWorld.loadedEntityList.get(0);
+			}catch(Exception e) {
+				best = null;
+			}
+			
+			for (Iterator<Entity> entities = mc.theWorld.loadedEntityList.iterator(); entities.hasNext();) {
+				Object theObject = entities.next();
+				if (theObject instanceof EntityLivingBase) {
+					EntityLivingBase entity = (EntityLivingBase) theObject;
+					if (entity instanceof EntityPlayerSP) {
+						continue;
+					}
+					if (!(entity instanceof EntityPlayer)) {
+						continue;
+					}
+					if (mc.thePlayer.getDistanceToEntity(entity) > settings.get(0).getValDouble() * 2) {
+						continue;
+					}
+					
+					if (!f || mc.thePlayer.getDistanceToEntity(entity) < mc.thePlayer.getDistanceToEntity(best)) {
+						best = entity;
+						f = true;
+					}
+				}
+			}
+		}
+		
+		if (f && best.isEntityAlive() && best != null) {
+			float yaw = Rotation.getRotationTo(best)[0];
+			float pYaw = mc.thePlayer.rotationYaw;
+			if (inversed) {
+				if (yaw > 0) {
+					yaw = -(180 - yaw);
+				}else {
+					yaw = 180 + yaw;
+				}
+			}
+			float s = (float) (settings.get(1).getValDouble() / mc.getDebugFPS() * 5);
+			float x = Rotation.getYawDistToEntity(best, yaw);
+			float d0 = x * x;
+			if (x < 0) {
+				s = -s;
+			}
+			if (Math.abs(s) < Math.abs(x)) {
+				x = s;
+			}
+			float newYaw = mc.thePlayer.rotationYaw + x;
+			if (newYaw > 180) {
+				newYaw -= 180;
+				newYaw = -(180 - newYaw);
+			}
+			if (newYaw < -180) {
+				newYaw += 180;
+				newYaw = 180 + newYaw;
+			}
+			x = Rotation.getPitchDistToEntity(best);
+			d0 += x * x;
+			if (x < 0) {
+				s = -s;
+			}
+			if (Math.abs(s) < Math.abs(x)) {
+				x = s;
+			}
+			float newPitch = mc.thePlayer.rotationYaw + x;
+			/*if (newPitch > 180) {
+				newPitch -= 180;
+				newPitch = -(180 - newPitch);
+			}
+			if (newPitch < -180) {
+				newPitch += 180;
+				newPitch = 180 + newPitch;
+			}*/
+			d0 = (float) Math.sqrt(Math.abs(d0));
+			if (Math.abs(d0) > 30) {
+				float dy = newPitch - newYaw, dp = newYaw - newPitch;
+				float d1 = (float) Math.max(1, Math.sqrt(Math.abs(dy * dy + dp * dp)));
+				dy /= d1;
+				dp /= d1;
+				float ry = (float) (Math.random() * 30 - 15);
+				float rp = (float) (Math.random() * 30 - 15);
+				newYaw = newYaw + dy * ry * 5 / d0;
+				newPitch = newPitch + dp * rp * 5 / d0;
+			}
+			if (newYaw > 180) {
+				newYaw -= 180;
+				newYaw = -(180 - newYaw);
+			}
+			if (newYaw < -180) {
+				newYaw += 180;
+				newYaw = 180 + newYaw;
+			}
+			/*if (newPitch > 180) {
+				newPitch -= 180;
+				newPitch = -(180 - newPitch);
+			}
+			if (newPitch < -180) {
+				newPitch += 180;
+				newPitch = 180 + newPitch;
+			}*/
+			System.out.println(newYaw + " " + newPitch);
+			mc.thePlayer.rotationYaw = newYaw;
+			mc.thePlayer.rotationPitch = newPitch;
+		}
+		super.onUpdate();
+	}
+}

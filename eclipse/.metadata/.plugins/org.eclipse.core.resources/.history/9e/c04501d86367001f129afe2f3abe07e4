@@ -1,0 +1,34 @@
+package Basil.module.movement;
+
+import java.util.ArrayList;
+
+import org.lwjgl.input.Keyboard;
+
+import Basil.Client;
+import Basil.module.Category;
+import Basil.module.Module;
+import de.Hero.settings.Setting;
+import net.minecraft.util.DamageSource;
+
+public class TNTBoost extends Basil.module.Module{
+	
+	public TNTBoost() {
+		super("TNT Boost", -1, Category.MOVEMENT);
+	}
+	
+	public void setup() {
+		Client.sm.rSetting(new Setting("Horizontal", this, 1.5, 1, 3, false));
+		Client.sm.rSetting(new Setting("Vertical", this, 1.5, 1, 3, false));
+	}
+	
+	public void playerHitBy(DamageSource s) {
+		if (isToggled()) {
+			ArrayList<Setting> settings = Client.sm.getSettingsByMod(this);
+			if (s.isExplosion()) {
+				mc.thePlayer.motionX *= settings.get(0).getValDouble();
+				mc.thePlayer.motionY *= settings.get(1).getValDouble();
+				mc.thePlayer.motionZ *= settings.get(0).getValDouble();
+			}
+		}
+	}
+}

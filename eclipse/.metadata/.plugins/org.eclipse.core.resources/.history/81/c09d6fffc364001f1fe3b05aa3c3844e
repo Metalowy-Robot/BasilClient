@@ -1,0 +1,27 @@
+package Basil.module.movement;
+
+import java.util.ArrayList;
+
+import org.lwjgl.input.Keyboard;
+
+import Basil.Client;
+import Basil.module.Category;
+import Basil.module.Module;
+import de.Hero.settings.Setting;
+
+public class BlinkBack extends Basil.module.Module{
+	
+	public BlinkBack() {
+		super("BlinkBack", -1, Category.MOVEMENT);
+	}
+	
+	public void onUpdate() {
+		if (isToggled()) {
+			ArrayList<Setting> settings = Client.sm.getSettingsByMod(this);
+			if (!settings.get(1).getValBoolean() || mc.thePlayer.onGround) {
+				mc.thePlayer.motionX *= settings.get(0).getValDouble();
+				mc.thePlayer.motionZ *= settings.get(0).getValDouble();
+			}
+		}
+	}
+}

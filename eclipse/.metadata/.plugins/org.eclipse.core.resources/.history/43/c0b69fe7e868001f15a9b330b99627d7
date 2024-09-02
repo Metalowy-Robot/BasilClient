@@ -1,0 +1,27 @@
+package Basil.module.misc;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.lwjgl.input.Keyboard;
+
+import Basil.Client;
+import Basil.module.*;
+import Basil.module.Module;
+import Basil.utils.Invoker;
+import de.Hero.settings.Setting;
+
+public class AutoBlock extends Module{
+
+	public AutoBlock() {
+		super("AutoBlock", -1, Category.MISC);
+	}
+	
+	public void onUpdate() {
+		if (isToggled()) {
+			if (mc.thePlayer.getHeldItem().stackSize < 1 && mc.thePlayer.getHeldItem().getItem() instanceof ItemBlock) {
+				
+			}
+		}
+	}
+}

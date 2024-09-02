@@ -1,0 +1,107 @@
+package Basil.module;
+
+import java.util.ArrayList;
+
+import Basil.module.combat.*;
+import Basil.module.misc.*;
+import Basil.module.movement.*;
+import Basil.module.player.*;
+import Basil.module.render.*;
+import Basil.utils.Timer;
+import net.minecraft.client.Minecraft;
+
+public class ModuleManager {
+	
+	private static ArrayList<Module> mods;
+	
+	public ModuleManager() {
+		mods = new ArrayList<Module>();
+		
+		//COMBAT
+		mods.add(new AimBot());
+		mods.add(new AutoClicker());
+		//mods.add(new AutoRun());
+		mods.add(new AutoStrafe());
+		mods.add(new AutoWTap());
+		mods.add(new Fastbow());
+		mods.add(new KillAura());
+		mods.add(new Reach());
+		mods.add(new Velocity());
+		
+		//MOVEMENT
+		mods.add(new AirWalk());
+		mods.add(new AutoJump());
+		mods.add(new AutoSneak());
+		mods.add(new AutoWalk());
+		mods.add(new Blink());
+		mods.add(new BlinkBack());
+		mods.add(new Dolphin());
+		mods.add(new Fly());
+		mods.add(new Glide());
+		mods.add(new Jetpack());
+		mods.add(new NoFall());
+		mods.add(new SafeWalk());
+		mods.add(new Scaffold());
+		mods.add(new Sneak());
+		mods.add(new Speed());
+		mods.add(new Spider());
+		mods.add(new Sprint());
+		mods.add(new Step());
+		
+		//PLAYER
+		mods.add(new AntiAfk());
+		mods.add(new AntiCobweb());
+		mods.add(new AutoMine());
+		mods.add(new AutoRespawn());
+		mods.add(new Bhop());
+		mods.add(new FastLadder());
+		mods.add(new FastPlace());
+		
+		//RENDER
+		mods.add(new ESP());
+		
+		mods.add(new ClickGui());
+		
+		//MISC
+		mods.add(new PVPFlagCheck());
+		mods.add(new TrashTalk());
+		
+	}
+	
+	public static void newMod(Module m) {
+		mods.add(m);
+	}
+	
+	public static ArrayList<Module> getModules(){
+		return mods;
+	}
+	
+	public static void onUpdate() {
+		for (Module m : mods) {
+			m.onUpdate();
+		}
+	}
+	
+	public static void onRender() {
+		for (Module m : mods) {
+			m.onRender();
+		}
+	}
+	
+	public static void onKey(int k) {
+		for (Module m : mods) {
+			if (m.getKey() == k) {
+				m.toggle();
+			}
+		}
+	}
+	
+	public static Module getModuleByName(String n) {
+		for (Module m : mods) {
+			if (m.getName().trim().equalsIgnoreCase(n.trim())) {
+				return m;
+			}
+		}
+		return null;
+	}
+}

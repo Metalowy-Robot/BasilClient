@@ -1,0 +1,108 @@
+package Basil.module.combat;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import org.lwjgl.input.Keyboard;
+
+import Basil.Client;
+import Basil.module.*;
+import Basil.module.Module;
+import Basil.utils.Rotation;
+import de.Hero.settings.Setting;
+import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.network.play.client.C03PacketPlayer;
+
+public class AimBotLegacy extends Module{
+	
+	EntityLivingBase best;
+	public boolean inversed = false;
+
+	public AimBotLegacy() {
+		super("Aimbot Legacy", Keyboard.KEY_J, Category.COMBAT);
+	}
+	
+	public void setup() {
+		Client.sm.rSetting(new Setting("Range", this, 8, 4, 25, false));
+	}
+	
+	public void inverse() {
+		inversed = !inversed;
+	}
+	
+	@Override
+	public void onFrame() {
+		if (!this.isToggled() || !(mc.thePlayer.getHealth() > 0)) {
+			return;
+		}
+		
+		ArrayList<Setting> settings = Client.sm.getSettingsByMod(this);
+		
+		boolean f = false;
+		best = null;
+		
+		for (Iterator<Entity> entities = mc.theWorld.loadedEntityList.iterator(); entities.hasNext();) {
+			Object theObject = entities.next();
+			if (theObject instanceof EntityLivingBase) {
+				EntityLivingBase entity = (EntityLivingBase) theObject;
+				if (entity instanceof EntityPlayerSP) {
+					continue;
+				}
+				if (!(entity instanceof EntityPlayer)) {
+					continue;
+				}
+				if (mc.thePlayer.getDistanceToEntity(entity) > settings.get(0).getValDouble() * 2) {
+					continue;
+				}
+				if (Rotation.getYawDistToEntity(entity) > settings.get(2).getValDouble()) {
+					continue;
+				}
+				
+				if (!f || mc.thePlayer.getDistanceToEntity(entity) < mc.thePlayer.getDistanceToEntity(best)) {
+					best = entity;
+					f = true;
+				}
+			}
+		}
+		
+		if (best == null) {
+			f = false;
+			try {
+				best = (EntityLivingBase) mc.theWorld.loadedEntityList.get(0);
+			}catch(Exception e) {
+				best = null;
+			}
+			
+			for (Iterator<Entity> entities = mc.theWorld.loadedEntityList.iterator(); entities.hasNext();) {
+				Object theObject = entities.next();
+				if (theObject instanceof EntityLivingBase) {
+					EntityLivingBase entity = (EntityLivingBase) theObject;
+					if (entity instanceof EntityPlayerSP) {
+						continue;
+					}
+					if (!(entity instanceof EntityPlayer)) {
+						continue;
+					}
+					if (mc.thePlayer.getDistanceToEntity(entity) > settings.get(0).getValDouble() * 2) {
+						continue;
+					}
+					
+					if (!f || mc.thePlayer.getDistanceToEntity(entity) < mc.thePlayer.getDistanceToEntity(best)) {
+						best = entity;
+						f = true;
+					}
+				}
+			}
+		}
+		
+		if (f && best.isEntityAlive() && best != null) {
+			mc.thePlayer.rotationYaw = Rotation.getRotationTo(best)[0];
+			mc.thePlayer.rotationPitch = Rotation.getRotationTo(best)[1];
+		}
+		super.onUpdate();
+	}
+}

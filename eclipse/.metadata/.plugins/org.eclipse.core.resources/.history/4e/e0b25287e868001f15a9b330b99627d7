@@ -1,0 +1,22 @@
+package Basil.module.misc;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.lwjgl.input.Keyboard;
+
+import Basil.Client;
+import Basil.module.*;
+import Basil.module.Module;
+import Basil.utils.Invoker;
+import de.Hero.settings.Setting;
+
+public class AutoBlock extends Module{
+
+	public AutoBlock() {
+		super("TrashTalk", Keyboard.KEY_P, Category.MISC);
+	}
+	
+	public void onEnable() {
+	}
+}

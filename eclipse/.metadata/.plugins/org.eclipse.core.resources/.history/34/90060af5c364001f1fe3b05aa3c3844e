@@ -1,0 +1,35 @@
+package Basil.module.movement;
+
+import java.util.ArrayList;
+
+import org.lwjgl.input.Keyboard;
+
+import Basil.Client;
+import Basil.module.Category;
+import Basil.module.Module;
+import de.Hero.settings.Setting;
+import net.minecraft.network.play.client.C03PacketPlayer;
+
+public class Blink extends Basil.module.Module{
+	
+	public static ArrayList<C03PacketPlayer> packets = new ArrayList<>();
+	public static boolean capture = false;
+	public static double lastX = 0;
+	public static double lastY = 0;
+	public static double lastZ = 0;
+	
+	public Blink() {
+		super("Blink", -1, Category.MOVEMENT);
+	}
+	
+	public void onEnable() {
+		capture = true;
+	}
+	
+	public void onDisable() {
+		capture = false;
+		for (int i = 0; i < packets.size(); i++) {
+			mc.thePlayer.sendQueue.addToSendQueue(packets[i]);
+		}
+	}
+}

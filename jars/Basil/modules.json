@@ -1,0 +1,779 @@
+{
+  "Aimbot": {
+    "enabled": false,
+    "key": -1,
+    "settingCount": 7,
+    "setts": {
+      "setting0": {
+        "type": "Slider",
+        "value": 4.976744186046512
+      },
+      "setting1": {
+        "type": "Slider",
+        "value": 21.0
+      },
+      "setting2": {
+        "type": "Slider",
+        "value": 31.0
+      },
+      "setting3": {
+        "type": "Slider",
+        "value": 180.0
+      },
+      "setting4": {
+        "type": "Slider",
+        "value": 0.25232558139534883
+      },
+      "setting5": {
+        "type": "Slider",
+        "value": 78.0
+      },
+      "setting6": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "AutoClicker": {
+    "enabled": true,
+    "key": -1,
+    "settingCount": 4,
+    "setts": {
+      "setting0": {
+        "type": "Slider",
+        "value": 13.25581395348837
+      },
+      "setting1": {
+        "type": "Slider",
+        "value": 17.162790697674417
+      },
+      "setting2": {
+        "type": "Check",
+        "value": true
+      },
+      "setting3": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "AutoRun": {
+    "enabled": false,
+    "key": -1,
+    "settingCount": 6,
+    "setts": {
+      "setting0": {
+        "type": "Slider",
+        "value": 4.0
+      },
+      "setting1": {
+        "type": "Slider",
+        "value": 5.0
+      },
+      "setting2": {
+        "type": "Combo",
+        "value": "null"
+      },
+      "setting3": {
+        "type": "Slider",
+        "value": 37.0
+      },
+      "setting4": {
+        "type": "Slider",
+        "value": 50.0
+      },
+      "setting5": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "AutoStrafe": {
+    "enabled": false,
+    "key": -1,
+    "settingCount": 10,
+    "setts": {
+      "setting0": {
+        "type": "Slider",
+        "value": 2.0
+      },
+      "setting1": {
+        "type": "Slider",
+        "value": 3.0
+      },
+      "setting2": {
+        "type": "Slider",
+        "value": 6.0
+      },
+      "setting3": {
+        "type": "Slider",
+        "value": 3.0
+      },
+      "setting4": {
+        "type": "Combo",
+        "value": "null"
+      },
+      "setting5": {
+        "type": "Slider",
+        "value": 46.0
+      },
+      "setting6": {
+        "type": "Slider",
+        "value": 52.0
+      },
+      "setting7": {
+        "type": "Slider",
+        "value": 440.0
+      },
+      "setting8": {
+        "type": "Slider",
+        "value": 513.0
+      },
+      "setting9": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "AutoWTap": {
+    "enabled": true,
+    "key": -1,
+    "settingCount": 9,
+    "setts": {
+      "setting0": {
+        "type": "Slider",
+        "value": 15.0
+      },
+      "setting1": {
+        "type": "Slider",
+        "value": 30.0
+      },
+      "setting2": {
+        "type": "Slider",
+        "value": 10.0
+      },
+      "setting3": {
+        "type": "Slider",
+        "value": 15.0
+      },
+      "setting4": {
+        "type": "Check",
+        "value": true
+      },
+      "setting5": {
+        "type": "Slider",
+        "value": 106.0
+      },
+      "setting6": {
+        "type": "Slider",
+        "value": 194.0
+      },
+      "setting7": {
+        "type": "Check",
+        "value": true
+      },
+      "setting8": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "Fastbow": {
+    "enabled": false,
+    "key": -1,
+    "settingCount": 1,
+    "setts": {
+      "setting0": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "1.7 Hitreg": {
+    "enabled": true,
+    "key": -1,
+    "settingCount": 1,
+    "setts": {
+      "setting0": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "KillAura": {
+    "enabled": false,
+    "key": -1,
+    "settingCount": 3,
+    "setts": {
+      "setting0": {
+        "type": "Slider",
+        "value": 17.0
+      },
+      "setting1": {
+        "type": "Slider",
+        "value": 3.941860465116279
+      },
+      "setting2": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "Reach": {
+    "enabled": true,
+    "key": -1,
+    "settingCount": 2,
+    "setts": {
+      "setting0": {
+        "type": "Slider",
+        "value": 1.0465116279069768
+      },
+      "setting1": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "Velocity": {
+    "enabled": true,
+    "key": -1,
+    "settingCount": 3,
+    "setts": {
+      "setting0": {
+        "type": "Slider",
+        "value": 0.9534883720930233
+      },
+      "setting1": {
+        "type": "Slider",
+        "value": 1.0
+      },
+      "setting2": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "TrashTalk": {
+    "enabled": false,
+    "key": 25,
+    "settingCount": 2,
+    "setts": {
+      "setting0": {
+        "type": "Combo",
+        "value": "en"
+      },
+      "setting1": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "AirWalk": {
+    "enabled": false,
+    "key": -1,
+    "settingCount": 1,
+    "setts": {
+      "setting0": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "AutoJump": {
+    "enabled": false,
+    "key": -1,
+    "settingCount": 1,
+    "setts": {
+      "setting0": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "AutoSneak": {
+    "enabled": false,
+    "key": 50,
+    "settingCount": 2,
+    "setts": {
+      "setting0": {
+        "type": "Slider",
+        "value": 1.1162790697674418
+      },
+      "setting1": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "AutoWalk": {
+    "enabled": false,
+    "key": -1,
+    "settingCount": 2,
+    "setts": {
+      "setting0": {
+        "type": "Check",
+        "value": false
+      },
+      "setting1": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "Blink": {
+    "enabled": false,
+    "key": 45,
+    "settingCount": 3,
+    "setts": {
+      "setting0": {
+        "type": "Check",
+        "value": true
+      },
+      "setting1": {
+        "type": "Slider",
+        "value": 5.0
+      },
+      "setting2": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "BlinkBack": {
+    "enabled": false,
+    "key": 47,
+    "settingCount": 1,
+    "setts": {
+      "setting0": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "Dolphin": {
+    "enabled": false,
+    "key": -1,
+    "settingCount": 1,
+    "setts": {
+      "setting0": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "FastJump": {
+    "enabled": true,
+    "key": -1,
+    "settingCount": 1,
+    "setts": {
+      "setting0": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "FastStop": {
+    "enabled": false,
+    "key": -1,
+    "settingCount": 2,
+    "setts": {
+      "setting0": {
+        "type": "Slider",
+        "value": 146.0
+      },
+      "setting1": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "Fly": {
+    "enabled": false,
+    "key": -1,
+    "settingCount": 2,
+    "setts": {
+      "setting0": {
+        "type": "Slider",
+        "value": 1.0
+      },
+      "setting1": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "Glide": {
+    "enabled": false,
+    "key": -1,
+    "settingCount": 3,
+    "setts": {
+      "setting0": {
+        "type": "Slider",
+        "value": 0.125
+      },
+      "setting1": {
+        "type": "Slider",
+        "value": 0.5
+      },
+      "setting2": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "Haze": {
+    "enabled": true,
+    "key": -1,
+    "settingCount": 1,
+    "setts": {
+      "setting0": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "Jetpack": {
+    "enabled": false,
+    "key": -1,
+    "settingCount": 1,
+    "setts": {
+      "setting0": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "NoFall": {
+    "enabled": false,
+    "key": -1,
+    "settingCount": 1,
+    "setts": {
+      "setting0": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "SafeWalk": {
+    "enabled": false,
+    "key": -1,
+    "settingCount": 1,
+    "setts": {
+      "setting0": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "Scaffold": {
+    "enabled": false,
+    "key": -1,
+    "settingCount": 1,
+    "setts": {
+      "setting0": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "Sneak": {
+    "enabled": false,
+    "key": -1,
+    "settingCount": 1,
+    "setts": {
+      "setting0": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "Speed": {
+    "enabled": false,
+    "key": -1,
+    "settingCount": 3,
+    "setts": {
+      "setting0": {
+        "type": "Slider",
+        "value": 1.052325581395349
+      },
+      "setting1": {
+        "type": "Check",
+        "value": true
+      },
+      "setting2": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "Spider": {
+    "enabled": false,
+    "key": -1,
+    "settingCount": 1,
+    "setts": {
+      "setting0": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "Sprint": {
+    "enabled": true,
+    "key": -1,
+    "settingCount": 1,
+    "setts": {
+      "setting0": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "Step": {
+    "enabled": false,
+    "key": -1,
+    "settingCount": 1,
+    "setts": {
+      "setting0": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "Strafe": {
+    "enabled": true,
+    "key": -1,
+    "settingCount": 1,
+    "setts": {
+      "setting0": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "TNT Boost": {
+    "enabled": false,
+    "key": -1,
+    "settingCount": 3,
+    "setts": {
+      "setting0": {
+        "type": "Slider",
+        "value": 1.5
+      },
+      "setting1": {
+        "type": "Slider",
+        "value": 1.5
+      },
+      "setting2": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "Tower": {
+    "enabled": false,
+    "key": -1,
+    "settingCount": 1,
+    "setts": {
+      "setting0": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "AntiAFK": {
+    "enabled": false,
+    "key": -1,
+    "settingCount": 1,
+    "setts": {
+      "setting0": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "AntiCobweb": {
+    "enabled": false,
+    "key": -1,
+    "settingCount": 1,
+    "setts": {
+      "setting0": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "AutoMine": {
+    "enabled": false,
+    "key": -1,
+    "settingCount": 1,
+    "setts": {
+      "setting0": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "AutoRespawn": {
+    "enabled": false,
+    "key": -1,
+    "settingCount": 1,
+    "setts": {
+      "setting0": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "FakeLag": {
+    "enabled": false,
+    "key": -1,
+    "settingCount": 3,
+    "setts": {
+      "setting0": {
+        "type": "Slider",
+        "value": 200.0
+      },
+      "setting1": {
+        "type": "Slider",
+        "value": 350.0
+      },
+      "setting2": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "FastLadder": {
+    "enabled": false,
+    "key": -1,
+    "settingCount": 2,
+    "setts": {
+      "setting0": {
+        "type": "Slider",
+        "value": 1.0
+      },
+      "setting1": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "FastPlace": {
+    "enabled": true,
+    "key": 21,
+    "settingCount": 1,
+    "setts": {
+      "setting0": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "FreeCam": {
+    "enabled": false,
+    "key": 64,
+    "settingCount": 2,
+    "setts": {
+      "setting0": {
+        "type": "Slider",
+        "value": 2.0
+      },
+      "setting1": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "ESP": {
+    "enabled": true,
+    "key": -1,
+    "settingCount": 6,
+    "setts": {
+      "setting0": {
+        "type": "Check",
+        "value": false
+      },
+      "setting1": {
+        "type": "Check",
+        "value": false
+      },
+      "setting2": {
+        "type": "Check",
+        "value": true
+      },
+      "setting3": {
+        "type": "Check",
+        "value": false
+      },
+      "setting4": {
+        "type": "Slider",
+        "value": 4.0
+      },
+      "setting5": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "ClickGui": {
+    "enabled": false,
+    "key": 54,
+    "settingCount": 6,
+    "setts": {
+      "setting0": {
+        "type": "Combo",
+        "value": "New"
+      },
+      "setting1": {
+        "type": "Check",
+        "value": false
+      },
+      "setting2": {
+        "type": "Slider",
+        "value": 252.0
+      },
+      "setting3": {
+        "type": "Slider",
+        "value": 207.0
+      },
+      "setting4": {
+        "type": "Slider",
+        "value": 3.0
+      },
+      "setting5": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "[HC] Reach": {
+    "enabled": false,
+    "key": -1,
+    "settingCount": 2,
+    "setts": {
+      "setting0": {
+        "type": "Combo",
+        "value": "EASY"
+      },
+      "setting1": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  },
+  "[HC] Hitreg": {
+    "enabled": false,
+    "key": -1,
+    "settingCount": 2,
+    "setts": {
+      "setting0": {
+        "type": "Combo",
+        "value": "EASY"
+      },
+      "setting1": {
+        "type": "Combo",
+        "value": "null"
+      }
+    }
+  }
+}

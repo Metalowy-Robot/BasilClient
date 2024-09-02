@@ -1,0 +1,23 @@
+package Basil.module.player;
+
+import org.lwjgl.input.Keyboard;
+
+import Basil.module.Category;
+import Basil.module.Module;
+
+public class FakeLag extends Basil.module.Module{
+	
+	public static boolean capture = false;
+
+	public FakeLag() {
+		super("FakeLag", -1, Category.PLAYER);
+	}
+	
+	public void onEnable() {
+		capturing = true;
+	}
+	
+	public void onDisable() {
+		capturing = false;
+	}
+}

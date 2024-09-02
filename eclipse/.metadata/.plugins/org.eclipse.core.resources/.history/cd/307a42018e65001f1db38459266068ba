@@ -1,0 +1,65 @@
+package Basil.module.misc;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
+import org.lwjgl.input.Keyboard;
+
+import Basil.Client;
+import Basil.module.*;
+import Basil.module.Module;
+import Basil.utils.Invoker;
+import de.Hero.settings.Setting;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+
+public class PVPFlagCheck extends Module{
+	
+	Queue<Entity> checkQueueEntity = new LinkedList<>();
+	Queue<Long> checkQueueTime = new LinkedList<>();
+	
+	int hits = 0;
+	int hitRegs = 0;
+	
+	public PVPFlagCheck() {
+		super("PVPFlagCheck", -1, Category.MISC);
+	}
+	
+	public void onSetup() {
+		Client.sm.rSetting(new Setting("Check Delay", this, 200, 50, 300, true));
+	}
+	
+	public void onDisable() {
+		System.out.println(hits + " " + hitRegs);
+	}
+	
+	public void onFrame() {
+		if (isToggled()) {
+			boolean f = true;
+			while (f && !checkQueueTime.isEmpty()) {
+				long nextTime = checkQueueTime.peek();
+				if (nextTime <= System.currentTimeMillis()) {
+					long time = checkQueueTime.remove();
+					Entity e = checkQueueEntity.remove();
+					if (e instanceof EntityLivingBase) {
+						hits++;
+						if (((EntityLivingBase) e).hurtTime > 0) {
+							hitRegs++;
+						}
+					}
+				}else {
+					f = false;
+				}
+			}
+		}
+	}
+	
+	public void entityAttackedByPlayer(Entity t) {
+		if (isToggled()) {
+			checkQueueEntity.add(t);
+			checkQueueTime.add((long) (System.currentTimeMillis() + Client.sm.getSettingsByMod(this).get(0).getValDouble()));
+		}
+	}
+}

@@ -1,0 +1,36 @@
+package Basil.module.combat;
+
+import java.util.ArrayList;
+
+import org.lwjgl.input.Keyboard;
+
+import Basil.Client;
+import Basil.module.Category;
+import Basil.module.Module;
+import Basil.utils.esp.BlinkUtils;
+import de.Hero.settings.Setting;
+import net.minecraft.client.network.NetHandlerPlayClient;
+import net.minecraft.network.play.client.C02PacketUseEntity;
+import net.minecraft.network.play.client.C03PacketPlayer;
+
+public class Razor extends Basil.module.Module{
+	
+	public static ArrayList<C02PacketUseEntity> packets = new ArrayList<>();
+	public static boolean capture = false;
+	
+	public Razor() {
+		super("Razor", -1, Category.COMBAT);
+	}
+	
+	public void onEnable() {
+		capture = true;
+	}
+	
+	public void onDisable() {
+		capture = false;
+		for (int i = 0; i < packets.size(); i++) {
+			NetHandlerPlayClient.netManager.sendPacket(packets.get(i));
+		}
+		packets = new ArrayList<>();
+	}
+}

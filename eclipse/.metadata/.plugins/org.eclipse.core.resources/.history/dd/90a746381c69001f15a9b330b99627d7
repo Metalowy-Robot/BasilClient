@@ -1,0 +1,75 @@
+package Basil.module.movement;
+
+import java.util.ArrayList;
+
+import org.lwjgl.input.Keyboard;
+
+import Basil.Client;
+import Basil.module.Category;
+import Basil.module.Module;
+import Basil.utils.esp.BlinkUtils;
+import de.Hero.settings.Setting;
+import net.minecraft.client.network.NetHandlerPlayClient;
+import net.minecraft.network.play.client.C03PacketPlayer;
+
+public class Blink extends Basil.module.Module{
+	
+	public static ArrayList<C03PacketPlayer> packets = new ArrayList<>();
+	public static boolean capture = false;
+	public static double lastX = 0;
+	public static double lastY = 0;
+	public static double lastZ = 0;
+	public static double lastMinX = 0;
+	public static double lastMinY = 0;
+	public static double lastMinZ = 0;
+	public static double lastMaxX = 0;
+	public static double lastMaxY = 0;
+	public static double lastMaxZ = 0;
+	public static boolean g = false;
+	public static int t = 6;
+	
+	public Blink() {
+		super("Blink", -1, Category.MOVEMENT);
+	}
+	
+	public void setup() {
+		Client.sm.rSetting(new Setting("Marker", this, true));
+		Client.sm.rSetting(new Setting("Marker Line Width", this, 2, 1, 8, true));
+	}
+	
+	public void onEnable() {
+		capture = true;
+		g = mc.thePlayer.onGround;
+		lastX = mc.thePlayer.posX;
+		lastY = mc.thePlayer.posY;
+		lastZ = mc.thePlayer.posZ;
+		lastMinX = mc.thePlayer.boundingBox.minX;
+		lastMinY = mc.thePlayer.boundingBox.minY;
+		lastMinZ = mc.thePlayer.boundingBox.minZ;
+		lastMaxX = mc.thePlayer.boundingBox.maxX;
+		lastMaxY = mc.thePlayer.boundingBox.maxY;
+		lastMaxZ = mc.thePlayer.boundingBox.maxZ;
+	}
+	
+	public void onRender() {
+		if (isToggled()) {
+			if (Client.sm.getSettingsByMod(this).get(0).getValBoolean()) {
+				BlinkUtils.setLineWidth((float) Client.sm.getSettingsByMod(this).get(1).getValDouble());
+				BlinkUtils.blockESPBox(lastMinX, lastMinY, lastMinZ, lastMaxX, lastMaxY, lastMaxZ);
+			}
+			if (t == 0) {
+				NetHandlerPlayClient.netManager.sendPacket(new C03PacketPlayer.C05PacketPlayerLook(90, 90, g));
+				t = 6;
+			}
+			t--;
+		}
+	}
+	
+	public void onDisable() {
+		capture = false;
+		for (int i = 0; i < packets.size(); i++) {
+			mc.thePlayer.sendQueue.addToSendQueue(packets.get(i));
+		}
+		packets = new ArrayList<>();
+	}
+}

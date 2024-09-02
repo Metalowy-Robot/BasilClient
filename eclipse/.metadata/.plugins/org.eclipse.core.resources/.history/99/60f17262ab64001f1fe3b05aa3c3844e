@@ -1,0 +1,143 @@
+package Basil.module;
+
+import java.util.ArrayList;
+
+import Basil.module.combat.AimBot;
+import Basil.module.combat.AutoClicker;
+import Basil.module.combat.AutoRun;
+import Basil.module.combat.AutoStrafe;
+import Basil.module.combat.AutoWTap;
+import Basil.module.combat.Fastbow;
+import Basil.module.combat.KillAura;
+import Basil.module.combat.Reach;
+import Basil.module.combat.Velocity;
+import Basil.module.misc.TrashTalk;
+import Basil.module.movement.AirWalk;
+import Basil.module.movement.AutoJump;
+import Basil.module.movement.AutoSneak;
+import Basil.module.movement.AutoWalk;
+import Basil.module.movement.Dolphin;
+import Basil.module.movement.Fly;
+import Basil.module.movement.Glide;
+import Basil.module.movement.Jetpack;
+import Basil.module.movement.NoFall;
+import Basil.module.movement.SafeWalk;
+import Basil.module.movement.Scaffold;
+import Basil.module.movement.Sneak;
+import Basil.module.movement.Speed;
+import Basil.module.movement.Spider;
+import Basil.module.movement.Sprint;
+import Basil.module.movement.Step;
+import Basil.module.player.AntiAfk;
+import Basil.module.player.AntiCobweb;
+import Basil.module.player.AutoMine;
+import Basil.module.player.AutoRespawn;
+import Basil.module.player.Bhop;
+import Basil.module.player.FastLadder;
+import Basil.module.player.FastPlace;
+import Basil.module.render.ClickGui;
+import Basil.module.render.ESP;
+import Basil.utils.Timer;
+import net.minecraft.client.Minecraft;
+
+public class ModuleManager {
+	
+	private static ArrayList<Module> mods;
+	
+	public ModuleManager() {
+		mods = new ArrayList<Module>();
+		
+		//COMBAT
+		mods.add(new AimBot());
+		mods.add(new AutoClicker());
+		mods.add(new AutoRun());
+		mods.add(new AutoStrafe());
+		mods.add(new AutoWTap());
+		mods.add(new Fastbow());
+		mods.add(new KillAura());
+		mods.add(new Reach());
+		mods.add(new Velocity());
+		
+		//MOVEMENT
+		mods.add(new AirWalk());
+		mods.add(new AutoJump());
+		mods.add(new AutoSneak());
+		mods.add(new AutoWalk());
+		mods.add(new Dolphin());
+		mods.add(new Fly());
+		mods.add(new Glide());
+		mods.add(new Jetpack());
+		mods.add(new NoFall());
+		mods.add(new SafeWalk());
+		mods.add(new Scaffold());
+		mods.add(new Sneak());
+		mods.add(new Speed());
+		mods.add(new Spider());
+		mods.add(new Sprint());
+		mods.add(new Step());
+		
+		//PLAYER
+		mods.add(new AntiAfk());
+		mods.add(new AntiCobweb());
+		mods.add(new AutoMine());
+		mods.add(new AutoRespawn());
+		mods.add(new Bhop());
+		mods.add(new FastLadder());
+		mods.add(new FastPlace());
+		
+		//RENDER
+		mods.add(new ESP());
+		
+		mods.add(new ClickGui());
+		
+		//MISC
+		mods.add(new TrashTalk());
+		
+		Timer t1 = new Timer();
+		while (true) {
+			if (t1.hasTimeElapsed(1000 / Math.max(1, Minecraft.getMinecraft().getDebugFPS()), true)) {
+				for (Module m : mods) {
+					m.onFrame();
+				}
+			}
+		}
+		
+	}
+	
+	public static void newMod(Module m) {
+		mods.add(m);
+	}
+	
+	public static ArrayList<Module> getModules(){
+		return mods;
+	}
+	
+	public static void onUpdate() {
+		for (Module m : mods) {
+			m.onUpdate();
+		}
+	}
+	
+	public static void onRender() {
+		for (Module m : mods) {
+			m.onRender();
+		}
+	}
+	
+	public static void onKey(int k) {
+		for (Module m : mods) {
+			if (m.getKey() == k) {
+				m.toggle();
+			}
+		}
+	}
+	
+	public static Module getModuleByName(String n) {
+		for (Module m : mods) {
+			if (m.getName().trim().equalsIgnoreCase(n.trim())) {
+				return m;
+			}
+		}
+		return null;
+	}
+}

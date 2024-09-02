@@ -1,0 +1,33 @@
+package Basil.module.movement;
+
+import java.util.ArrayList;
+
+import org.lwjgl.input.Keyboard;
+
+import Basil.Client;
+import Basil.module.Category;
+import Basil.module.Module;
+import de.Hero.settings.Setting;
+
+public class Haze extends Basil.module.Module{
+	
+	public Haze() {
+		super("Haze", -1, Category.MOVEMENT);
+	}
+	
+	public void setup() {
+		Client.sm.rSetting(new Setting("Change", this, 0.5, 0, 1, false));
+		//Client.sm.rSetting(new Setting("Hover", this, true));
+	}
+	
+	public void onUpdate() {
+		if (isToggled()) {
+			ArrayList<Setting> settings = Client.sm.getSettingsByMod(this);
+			if (mc.thePlayer.onGround) {
+				/** settings.get(0).getValDouble()*/
+				mc.thePlayer.moveForward = (float) Math.sqrt(mc.thePlayer.moveStrafing * mc.thePlayer.moveStrafing + mc.thePlayer.moveForward * mc.thePlayer.moveForward);
+				mc.thePlayer.moveStrafing = 0;
+			}
+		}
+	}
+}

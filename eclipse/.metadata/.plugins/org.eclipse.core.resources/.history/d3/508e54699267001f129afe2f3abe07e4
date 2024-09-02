@@ -1,0 +1,47 @@
+package Basil.utils;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+
+public class Rotation {
+	static Minecraft mc = Minecraft.getMinecraft();
+	public static float[] getRotationTo(Entity e) {
+		double deltaX = e.posX + (e.posX - e.lastTickPosX) - mc.thePlayer.posX,
+				deltaY = e.posY - 3.5 + e.getEyeHeight() - mc.thePlayer.posY + mc.thePlayer.getEyeHeight(),
+				deltaZ = e.posZ + (e.posZ - e.lastTickPosZ) - mc.thePlayer.posZ,
+				dist = Math.sqrt(deltaX * deltaX + deltaZ * deltaZ);
+		float yaw = (float) Math.toDegrees(-Math.atan(deltaX / deltaZ)),
+				pitch = (float) -Math.toDegrees(Math.atan(deltaY / dist));
+		if (deltaX < 0 && deltaZ < 0) {
+			yaw = (float) (90 + Math.toDegrees(Math.atan(deltaZ / deltaX)));
+		}else if (deltaX > 0 && deltaZ < 0) {
+			yaw = (float) (-90 + Math.toDegrees(Math.atan(deltaZ / deltaX)));
+		}
+		
+		return new float[] {yaw, pitch};
+	}
+	public static float getYawDistToEntity(EntityLivingBase entity) {
+		float yaw = getRotationTo(entity)[0];
+		float pYaw = mc.thePlayer.rotationYaw;
+		float x = yaw - pYaw;
+		x = (x + 540) % 360 - 180;
+		return x;
+	}
+	public static float getPitchDistToEntity(EntityLivingBase entity) {
+		float pitch = getRotationTo(entity)[1];
+		float pPitch = mc.thePlayer.rotationPitch;
+		float x = pitch - pPitch;
+		x = (x + 540) % 360 - 180;
+		return x;
+	}
+	public static float getYawDistToEntity(EntityLivingBase entity, float yaw) {
+		float pYaw = mc.thePlayer.rotationYaw;
+		System.out.println("PYAW " + yaw);
+		float x = yaw - pYaw;
+		x = (x + 540) % 360 - 180;
+		return x;
+	}
+}

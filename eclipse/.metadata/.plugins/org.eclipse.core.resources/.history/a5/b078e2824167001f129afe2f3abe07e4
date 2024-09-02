@@ -1,0 +1,53 @@
+package Basil.module.player;
+
+import java.util.*;
+
+import org.lwjgl.input.Keyboard;
+
+import Basil.Client;
+import Basil.module.Category;
+import Basil.module.Module;
+import Basil.utils.Invoker;
+import de.Hero.settings.Setting;
+import net.minecraft.network.Packet;
+
+public class FreeCam extends Basil.module.Module{
+	
+	public static boolean capturing = false;
+	
+	public FreeCam() {
+		super("FreeCam", Keyboard.KEY_F6, Category.PLAYER);
+	}
+	
+	public void setup() {
+		Client.sm.rSetting(new Setting("Speed", this, 2, 0.5, 10, false));
+	}
+	
+	public void onEnable() {
+		capturing = true;
+		mc.thePlayer.capabilities.isFlying = true;
+		
+	}
+	
+	public void onUpdate() {
+		ArrayList<Setting> settings = Client.sm.getSettingsByMod(this);
+		if (isToggled()) {
+			if (mc.gameSettings.keyBindJump.isPressed()) {
+				mc.thePlayer.motionY += 0.1f;
+			}
+			
+			if (mc.gameSettings.keyBindSneak.isPressed()) {
+				mc.thePlayer.motionY -= 0.1f;
+			}
+			
+			if (mc.gameSettings.keyBindForward.isPressed()) {
+				mc.thePlayer.capabilities.setFlySpeed((float) (settings.get(0).getValDouble() / 10));
+			}
+		}
+	}
+	
+	public void onDisable() {
+		Invoker.setNoClip(false);
+		mc.thePlayer.capabilities.isFlying = false;
+	}
+}

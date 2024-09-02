@@ -1,0 +1,83 @@
+---- Minecraft Crash Report ----
+// Hey, that tickles! Hehehe!
+
+Time: 29.08.2024, 20:20
+Description: Unexpected error
+
+java.lang.NullPointerException: Cannot invoke "java.lang.Long.longValue()" because the return value of "java.util.Queue.peek()" is null
+	at Basil.module.player.FakeLag.onFrame(FakeLag.java:30)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1075)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:423)
+	at net.minecraft.client.main.Main.main(Main.java:113)
+	at Start.main(Start.java:11)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:401)
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 13 total; [EntityPlayerSP['tbdrwg42'/188008, l='MpServer', x=-17,63, y=56,00, z=-65,92], EntityOtherPlayerMP['anesdoktor'/187959, l='MpServer', x=-7,63, y=57,00, z=-70,03], EntityOtherPlayerMP['noonogamer17'/187812, l='MpServer', x=-4,59, y=56,00, z=-25,47], EntityOtherPlayerMP['SEMIH64YT'/187763, l='MpServer', x=8,67, y=56,43, z=-46,63], EntityOtherPlayerMP['§7'/400, l='MpServer', x=13,50, y=56,50, z=-30,50], EntityOtherPlayerMP['solodunduk'/154730, l='MpServer', x=-1,63, y=56,00, z=-42,69], EntityOtherPlayerMP['ITzPaNdy'/181099, l='MpServer', x=2,94, y=56,00, z=-33,31], EntityOtherPlayerMP['§l'/327, l='MpServer', x=-10,50, y=58,00, z=-69,50], EntityOtherPlayerMP['§a'/324, l='MpServer', x=4,50, y=58,00, z=-73,50], EntityOtherPlayerMP['§r'/333, l='MpServer', x=-7,50, y=58,00, z=-72,50], EntityOtherPlayerMP['§e'/330, l='MpServer', x=-3,50, y=58,00, z=-73,50], EntityOtherPlayerMP['§7'/321, l='MpServer', x=8,50, y=58,00, z=-72,50], EntityOtherPlayerMP['§6'/397, l='MpServer', x=11,50, y=58,00, z=-69,50]]
+	Chunk stats: MultiplayerChunkCache: 441, 441
+	Level seed: 0
+	Level generator: ID 01 - flat, ver 0. Features enabled: false
+	Level generator options: 
+	Level spawn location: -445,00,4,00,-1574,00 - World: (-445,4,-1574), Chunk: (at 3,0,10 in -28,-99; contains blocks -448,0,-1584 to -433,255,-1569), Region: (-1,-4; contains chunks -32,-128 to -1,-97, blocks -512,0,-2048 to -1,255,-1537)
+	Level time: 219812 game time, 1 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: survival (ID 0). Hardcore: false. Cheats: false
+	Forced entities: 113 total; [EntityOtherPlayerMP['anesdoktor'/187959, l='MpServer', x=-7,63, y=57,00, z=-70,03], EntityOtherPlayerMP['§7'/321, l='MpServer', x=8,50, y=58,00, z=-72,50], EntityOtherPlayerMP['§a'/324, l='MpServer', x=4,50, y=58,00, z=-73,50], EntityOtherPlayerMP['§l'/327, l='MpServer', x=-10,50, y=58,00, z=-69,50], EntityPlayerSP['tbdrwg42'/188008, l='MpServer', x=-17,63, y=56,00, z=-65,92], EntityOtherPlayerMP['§e'/330, l='MpServer', x=-3,50, y=58,00, z=-73,50], EntityOtherPlayerMP['§r'/333, l='MpServer', x=-7,50, y=58,00, z=-72,50], EntityArmorStand['§b§lVOTE CRATE'/342, l='MpServer', x=-9,50, y=59,47, z=-27,50], EntityArmorStand['Armor Stand'/343, l='MpServer', x=-9,50, y=59,22, z=-27,50], EntityOtherPlayerMP['Beath'/188057, l='MpServer', x=0,50, y=58,00, z=-12,50], EntityArmorStand['§fThis crate key can be'/344, l='MpServer', x=-9,50, y=58,97, z=-27,50], EntityArmorStand['§bobtained §fby voting'/345, l='MpServer', x=-9,50, y=58,72, z=-27,50], EntityArmorStand['Armor Stand'/346, l='MpServer', x=-9,50, y=58,47, z=-27,50], EntityArmorStand['§e§lLeft Click§r §fto view!'/347, l='MpServer', x=-9,50, y=58,22, z=-27,50], EntityArmorStand['§e§lRight Click§r§f to open!'/348, l='MpServer', x=-9,50, y=57,97, z=-27,50], EntityArmorStand['§c§lCHALLENGER CRATE'/349, l='MpServer', x=-12,50, y=59,47, z=-29,50], EntityArmorStand['Armor Stand'/350, l='MpServer', x=-12,50, y=59,22, z=-29,50], EntityArmorStand['§fThis crate key can be'/351, l='MpServer', x=-12,50, y=58,97, z=-29,50], EntityArmorStand['§bobtained §fby playing'/352, l='MpServer', x=-12,50, y=58,72, z=-29,50], EntityArmorStand['Armor Stand'/353, l='MpServer', x=-12,50, y=58,47, z=-29,50], EntityArmorStand['§e§lLeft Click§r §fto view!'/354, l='MpServer', x=-12,50, y=58,22, z=-29,50], EntityArmorStand['§e§lRight Click§r§f to open!'/355, l='MpServer', x=-12,50, y=57,97, z=-29,50], EntityArmorStand['§6§lPREMIUM CRATE'/356, l='MpServer', x=-14,50, y=59,47, z=-32,50], EntityArmorStand['Armor Stand'/357, l='MpServer', x=-14,50, y=59,22, z=-32,50], EntityArmorStand['§fThis crate key can be'/358, l='MpServer', x=-14,50, y=58,97, z=-32,50], EntityArmorStand['§bobtained §fat our store'/359, l='MpServer', x=-14,50, y=58,72, z=-32,50], EntityArmorStand['Armor Stand'/360, l='MpServer', x=-14,50, y=58,47, z=-32,50], EntityOtherPlayerMP['solodunduk'/154730, l='MpServer', x=-1,63, y=56,00, z=-42,69], EntityArmorStand['§e§lLeft Click§r §fto view!'/361, l='MpServer', x=-14,50, y=58,22, z=-32,50], EntityOtherPlayerMP['ITzPaNdy'/181099, l='MpServer', x=2,94, y=56,00, z=-33,31], EntityArmorStand['§e§lRight Click§r§f to open!'/362, l='MpServer', x=-14,50, y=57,97, z=-32,50], EntityArmorStand['§6§lDuels'/363, l='MpServer', x=-19,50, y=58,66, z=-39,50], EntityArmorStand['Armor Stand'/364, l='MpServer', x=-19,50, y=58,41, z=-39,50], EntityArmorStand['§fYou can duel other'/365, l='MpServer', x=-19,50, y=58,16, z=-39,50], EntityArmorStand['§fplayers with §e/duel <name>'/366, l='MpServer', x=-19,50, y=57,91, z=-39,50], EntityArmorStand['§e§lParty'/367, l='MpServer', x=-19,50, y=60,16, z=-43,00], EntityArmorStand['Armor Stand'/368, l='MpServer', x=-19,50, y=59,91, z=-43,00], EntityOtherPlayerMP['SEMIH64YT'/187763, l='MpServer', x=8,67, y=56,43, z=-46,63], EntityArmorStand['§fTeam up with other players'/369, l='MpServer', x=-19,50, y=59,66, z=-43,00], EntityArmorStand['§fwith §e/party invite <name>'/370, l='MpServer', x=-19,50, y=59,41, z=-43,00], EntityArmorStand['§b§lProfile'/371, l='MpServer', x=-19,50, y=58,66, z=-46,50], EntityArmorStand['Armor Stand'/372, l='MpServer', x=-19,50, y=58,41, z=-46,50], EntityArmorStand['§fView player profiles'/373, l='MpServer', x=-19,50, y=58,16, z=-46,50], EntityArmorStand['§fwith §e/profile <name>'/374, l='MpServer', x=-19,50, y=57,91, z=-46,50], EntityArmorStand['§c§lRecaps'/375, l='MpServer', x=-19,50, y=60,16, z=-50,00], EntityArmorStand['Armor Stand'/376, l='MpServer', x=-19,50, y=59,91, z=-50,00], EntityArmorStand['§fView match logs of other'/377, l='MpServer', x=-19,50, y=59,66, z=-50,00], EntityArmorStand['§fplayers with §e/recaps <name>'/378, l='MpServer', x=-19,50, y=59,41, z=-50,00], EntityOtherPlayerMP['ALEGE2001'/182275, l='MpServer', x=0,50, y=58,00, z=-12,50], EntityArmorStand['§d§lKit Editor'/379, l='MpServer', x=-19,50, y=58,66, z=-53,50], EntityOtherPlayerMP['yrgamerpluss'/187910, l='MpServer', x=-8,75, y=59,50, z=-16,84], EntityArmorStand['Armor Stand'/380, l='MpServer', x=-19,50, y=58,41, z=-53,50], EntityOtherPlayerMP['anesdoktor'/187959, l='MpServer', x=-7,63, y=57,00, z=-70,03], EntityArmorStand['§fEdit your kits'/381, l='MpServer', x=-19,50, y=58,16, z=-53,50], EntityOtherPlayerMP['§r'/336, l='MpServer', x=-6,50, y=58,00, z=-14,50], EntityArmorStand['§fwith §e/kiteditor'/382, l='MpServer', x=-19,50, y=57,91, z=-53,50], EntityOtherPlayerMP['noonogamer17'/187812, l='MpServer', x=-4,59, y=56,00, z=-25,47], EntityArmorStand['§6§lGold Shop'/383, l='MpServer', x=13,50, y=61,06, z=-30,50], EntityOtherPlayerMP['SEMIH64YT'/187763, l='MpServer', x=8,67, y=56,43, z=-46,63], EntityArmorStand['Armor Stand'/384, l='MpServer', x=13,50, y=60,81, z=-30,50], EntityOtherPlayerMP['§7'/400, l='MpServer', x=13,50, y=56,50, z=-30,50], EntityArmorStand['§6Gold§f is a newly introduced currency.§r'/385, l='MpServer', x=13,50, y=60,56, z=-30,50], EntityOtherPlayerMP['Ir0NNNNN'/187420, l='MpServer', x=9,66, y=56,00, z=-29,04], EntityArmorStand['§fWith this currency, you have an in-game§r'/386, l='MpServer', x=13,50, y=60,31, z=-30,50], EntityArmorStand['§fStore where you can buy goods such as§r'/387, l='MpServer', x=13,50, y=60,06, z=-30,50], EntityArmorStand['§dRanks§f, and §cCrates Keys §fusing your§r'/388, l='MpServer', x=13,50, y=59,81, z=-30,50], EntityArmorStand['§6Gold§f which is to be bought on our Store.§r'/389, l='MpServer', x=13,50, y=59,56, z=-30,50], EntityArmorStand['Armor Stand'/390, l='MpServer', x=13,50, y=59,31, z=-30,50], EntityArmorStand['§fMake sure to purchase your §6Gold§f'/391, l='MpServer', x=13,50, y=59,06, z=-30,50], EntityArmorStand['§fon our Store : §estore.pika-network.net'/392, l='MpServer', x=13,50, y=58,81, z=-30,50], EntityArmorStand['Armor Stand'/393, l='MpServer', x=13,50, y=58,56, z=-30,50], EntityArmorStand['§6§lRight Click §fto open the NPC!'/394, l='MpServer', x=13,50, y=58,31, z=-30,50], EntityOtherPlayerMP['§6'/397, l='MpServer', x=11,50, y=58,00, z=-69,50], EntityOtherPlayerMP['§7'/400, l='MpServer', x=13,50, y=56,50, z=-30,50], EntityOtherPlayerMP['noonogamer17'/187812, l='MpServer', x=-4,59, y=56,00, z=-25,47], EntityOtherPlayerMP['solodunduk'/154730, l='MpServer', x=-1,63, y=56,00, z=-42,69], EntityOtherPlayerMP['ITzPaNdy'/181099, l='MpServer', x=2,94, y=56,00, z=-33,31], EntityArmorStand['§6§lEvents'/452, l='MpServer', x=-10,50, y=61,13, z=-69,50], EntityArmorStand['Armor Stand'/453, l='MpServer', x=-10,50, y=60,88, z=-69,50], EntityArmorStand['§fJoin or host public events'/454, l='MpServer', x=-10,50, y=60,63, z=-69,50], EntityArmorStand['§ffor everyone in the server.'/455, l='MpServer', x=-10,50, y=60,38, z=-69,50], EntityArmorStand['Armor Stand'/456, l='MpServer', x=-10,50, y=60,13, z=-69,50], EntityArmorStand['§eClick to open'/457, l='MpServer', x=-10,50, y=59,88, z=-69,50], EntityArmorStand['§b§lFEATURED MODE'/458, l='MpServer', x=11,50, y=60,63, z=-69,50], EntityArmorStand['Armor Stand'/459, l='MpServer', x=11,50, y=60,38, z=-69,50], EntityArmorStand['§a§lBridge §7(24 players)'/460, l='MpServer', x=11,50, y=60,13, z=-69,50], EntityArmorStand['§eClick to play'/461, l='MpServer', x=11,50, y=59,88, z=-69,50], EntityArmorStand['§a§lUnranked §7(84 players)'/462, l='MpServer', x=-7,50, y=61,13, z=-72,50], EntityArmorStand['Armor Stand'/463, l='MpServer', x=-7,50, y=60,88, z=-72,50], EntityArmorStand['§fPlay casual matches to'/464, l='MpServer', x=-7,50, y=60,63, z=-72,50], EntityArmorStand['§fpractice and become better.'/465, l='MpServer', x=-7,50, y=60,38, z=-72,50], EntityArmorStand['Armor Stand'/466, l='MpServer', x=-7,50, y=60,13, z=-72,50], EntityArmorStand['§eClick to open'/467, l='MpServer', x=-7,50, y=59,88, z=-72,50], EntityArmorStand['§c§lRanked §7(4 players)'/468, l='MpServer', x=-3,50, y=61,13, z=-73,50], EntityArmorStand['Armor Stand'/469, l='MpServer', x=-3,50, y=60,88, z=-73,50], EntityArmorStand['§fPlay competitive matches'/470, l='MpServer', x=-3,50, y=60,63, z=-73,50], EntityArmorStand['§fto fight for elo.'/471, l='MpServer', x=-3,50, y=60,38, z=-73,50], EntityArmorStand['Armor Stand'/472, l='MpServer', x=-3,50, y=60,13, z=-73,50], EntityArmorStand['§eClick to open'/473, l='MpServer', x=-3,50, y=59,88, z=-73,50], EntityOtherPlayerMP['§l'/327, l='MpServer', x=-10,50, y=58,00, z=-69,50], EntityArmorStand['§b§lFEATURED MODE'/474, l='MpServer', x=4,50, y=60,63, z=-73,50], EntityOtherPlayerMP['§a'/324, l='MpServer', x=4,50, y=58,00, z=-73,50], EntityArmorStand['Armor Stand'/475, l='MpServer', x=4,50, y=60,38, z=-73,50], EntityOtherPlayerMP['§r'/333, l='MpServer', x=-7,50, y=58,00, z=-72,50], EntityArmorStand['§a§lBoxing §7(6 players)'/476, l='MpServer', x=4,50, y=60,13, z=-73,50], EntityOtherPlayerMP['§e'/330, l='MpServer', x=-3,50, y=58,00, z=-73,50], EntityArmorStand['§eClick to play'/477, l='MpServer', x=4,50, y=59,88, z=-73,50], EntityOtherPlayerMP['§7'/321, l='MpServer', x=8,50, y=58,00, z=-72,50], EntityArmorStand['§b§lFEATURED MODE'/478, l='MpServer', x=8,50, y=60,63, z=-72,50], EntityOtherPlayerMP['§6'/397, l='MpServer', x=11,50, y=58,00, z=-69,50], EntityArmorStand['Armor Stand'/479, l='MpServer', x=8,50, y=60,38, z=-72,50], EntityArmorStand['§a§lBedFight §7(26 players)'/480, l='MpServer', x=8,50, y=60,13, z=-72,50], EntityArmorStand['§eClick to play'/481, l='MpServer', x=8,50, y=59,88, z=-72,50]]
+	Retry entities: 0 total; []
+	Server brand: PaperSpigot (Velocity)
+	Server type: Non-integrated multiplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:401)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2763)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:452)
+	at net.minecraft.client.main.Main.main(Main.java:113)
+	at Start.main(Start.java:11)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.8.8
+	Operating System: Windows 10 (amd64) version 10.0
+	CPU: 4x Intel(R) Core(TM) i5-6200U CPU @ 2.30GHz
+	Java Version: 22.0.2, Eclipse Adoptium
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode), Eclipse Adoptium
+	Memory: 134858632 bytes (128 MB) / 1073741824 bytes (1024 MB) up to 1073741824 bytes (1024 MB)
+	JVM Flags: 3 total; -XX:+ShowCodeDetailsInExceptionMessages -Xmx1024M -Xms1024M
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	Launched Version: mcp
+	LWJGL: 2.9.4
+	OpenGL: Intel(R) HD Graphics 520 GL version 4.4.0 - Build 21.20.16.4627, Intel
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: No
+	Is Modded: Very likely; Jar signature invalidated
+	Type: Client (map_client.txt)
+	Resource Packs: 
+	Current Language: English (US)
+	Profiler Position: N/A (disabled)
+	CPU: 4x Intel(R) Core(TM) i5-6200U CPU @ 2.30GHz
+	OptiFine Version: OptiFine_1.8.8_HD_U_H8
+	Render Distance Chunks: 7
+	Mipmaps: 4
+	Anisotropic Filtering: 1
+	Antialiasing: 0
+	Multitexture: false
+	Shaders: null
+	OpenGlVersion: 4.4.0 - Build 21.20.16.4627
+	OpenGlRenderer: Intel(R) HD Graphics 520
+	OpenGlVendor: Intel
+	CpuCount: 4

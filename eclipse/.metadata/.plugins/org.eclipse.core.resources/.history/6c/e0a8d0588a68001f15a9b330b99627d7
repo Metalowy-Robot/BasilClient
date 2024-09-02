@@ -1,0 +1,54 @@
+package Basil.module.hardcore;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
+import org.lwjgl.input.Keyboard;
+
+import Basil.Client;
+import Basil.module.*;
+import Basil.module.Module;
+import Basil.utils.Invoker;
+import de.Hero.settings.Setting;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.network.play.client.*;
+
+public class HCReach extends Module{
+	
+	Map<String, Integer> diffs = new HashMap<>();
+	static double currentReach = 1.0d;
+	ArrayList<Setting> settings = Client.sm.getSettingsByMod(this);
+	
+	public HCReach() {
+		super("|HC| Reach", -1, Category.HARDCORE);
+	}
+	
+	public void setup() {
+		ArrayList<String> diffs2 = new ArrayList<>();
+		diffs2.add("EASY");
+		diffs2.add("MEDIUM");
+		diffs2.add("HARD");
+		Client.sm.rSetting(new Setting("Difficulty", this, "EASY", diffs2));
+		currentReach = Client.sm.getSettingsByMod(this).get(0).getValString();
+	}
+	
+	public void onUpdate() {
+		settings = Client.sm.getSettingsByMod(this);
+		if (isToggled()) {
+			currentReach = settings.get(0).getValDouble();
+		}
+	}
+	
+	public void onDisable() {
+		currentReach = 1.0d;
+	}
+	
+	public static double getReach() {
+		return currentReach;
+	}
+}

@@ -1,0 +1,33 @@
+package Basil.module.movement;
+
+import java.util.ArrayList;
+
+import org.lwjgl.input.Keyboard;
+
+import Basil.Client;
+import Basil.module.Category;
+import Basil.module.Module;
+import de.Hero.settings.Setting;
+
+public class Strafe extends Basil.module.Module{
+	
+	boolean last = false;
+	
+	public Strafe() {
+		super("Strafe", -1, Category.MOVEMENT);
+	}
+	
+	public void onUpdate() {
+		if (isToggled()) {
+			if (mc.gameSettings.keyBindLeft.pressed && mc.gameSettings.keyBindRight.pressed) {
+				if (last) {
+					mc.gameSettings.keyBindRight.pressed = false;
+					last = false;
+				}else {
+					mc.gameSettings.keyBindLeft.pressed = false;
+					last = true;
+				}
+			}
+		}
+	}
+}

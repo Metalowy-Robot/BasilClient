@@ -1,0 +1,18 @@
+package Basil.module.movement;
+
+import java.util.ArrayList;
+
+import org.lwjgl.input.Keyboard;
+
+import Basil.Client;
+import Basil.module.Category;
+import Basil.module.Module;
+import de.Hero.settings.Setting;
+
+public class NoSlide extends Basil.module.Module{
+	
+	public NoSlide() {
+		super("NoSlide", -1, Category.MOVEMENT);
+	}
+
+}

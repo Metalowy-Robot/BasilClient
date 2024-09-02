@@ -1,0 +1,54 @@
+package Basil.module.misc;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.lwjgl.input.Keyboard;
+
+import Basil.Client;
+import Basil.module.*;
+import Basil.module.Module;
+import Basil.utils.Invoker;
+import de.Hero.settings.Setting;
+import net.minecraft.block.material.Material;
+import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
+
+public class AutoBlock extends Module{
+
+	public AutoBlock() {
+		super("AutoBlock", -1, Category.MISC);
+	}
+	
+	public void onUpdate() {
+		if (isToggled()) {
+			if (mc.thePlayer.getHeldItem() != null && mc.thePlayer.getHeldItem().stackSize == 1 && mc.thePlayer.getHeldItem().getItem() instanceof ItemBlock) {
+				for (ItemStack i : mc.thePlayer.getInventory()) {
+					if (i != null) {
+						if (i.getItem() instanceof ItemBlock) {
+							if (mc.thePlayer.getHeldItem().getItem() == i.getItem()) {
+								if (i.stackSize <= 63) {
+									mc.thePlayer.getHeldItem().stackSize = i.stackSize + 1;
+									i.stackSize = 0;
+								}else {
+									mc.thePlayer.getHeldItem().stackSize = i.stackSize;
+									i.stackSize = 1;
+								}
+								return;
+							}else {
+								if (i.stackSize > 1) {
+									ItemStack t = mc.thePlayer.getHeldItem();
+									mc.thePlayer.getHeldItem().stackSize = i.stackSize;
+									mc.thePlayer.getHeldItem().setItem(i.getItem());
+									i.setItem(t.getItem());
+									i.stackSize = t.stackSize;
+									return;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
